@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css">
+		
+	</head>
+	<body>
+		<!--顶部-->
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<!--<a id="info" class="mui-icon mui-icon-info-filled mui-pull-right" style="color: #999;"></a>-->
+			<h1 class="mui-title">Hello mui</h1>
+		</header>
+		<!--内容-->
+		<div class="mui-content mui-scroll-wrapper" id="refreshContainer">
+			<div class="mui-scroll">
+				<div class="mui-card">
+					<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../images/cbd.jpg)"></div>
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner">
+							<p>Posted on January 18, 2016</p>
+							<p style="color: #333;">这里显示文章摘要，让读者对文章内容有个粗略的概念...</p>
+						</div>
+					</div>
+					<div class="mui-card-footer">
+						<a class="mui-card-link">Like</a>
+						<a class="mui-card-link">Read more</a>
+						<a class="iconfont icon-zan"></a>
+						<a class="iconfont icon-dianzan1"></a>
+					</div>
+				</div>
+				<div class="mui-card">
+					<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../images/cbd.jpg)"></div>
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner">
+							<p>Posted on January 18, 2016</p>
+							<p style="color: #333;">这里显示文章摘要，让读者对文章内容有个粗略的概念...</p>
+						</div>
+					</div>
+					<div class="mui-card-footer">
+						<a class="mui-card-link">Like</a>
+						<a class="mui-card-link">Read more</a>
+						<a class="iconfont icon-zan"></a>
+						<a class="iconfont icon-dianzan1"></a>
+					</div>
+				</div>
+				<div class="mui-card">
+					<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../images/cbd.jpg)"></div>
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner">
+							<p>Posted on January 18, 2016</p>
+							<p style="color: #333;">这里显示文章摘要，让读者对文章内容有个粗略的概念...</p>
+						</div>
+					</div>
+					<div class="mui-card-footer">
+						<a class="mui-card-link">Like</a>
+						<a class="mui-card-link">Read more</a>
+						<a class="iconfont icon-zan"></a>
+						<a class="iconfont icon-dianzan1"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!---->
+		
+		<!--底部-->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item" href="#tabbar">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item mui-active" href="#tabbar-with-chat">
+				<span class="mui-icon mui-icon-email"><span class="mui-badge">9</span></span>
+				<span class="mui-tab-label">消息</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-contact">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">通讯录</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-map">
+				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-tab-label">设置</span>
+			</a>
+		</nav>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/update.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			mui.init({
+			  pullRefresh : {
+			    container:"#refreshContainer",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+			    down : {
+			      height:50,//可选,默认50.触发下拉刷新拖动距离,
+			      auto: false,//可选,默认false.自动下拉刷新一次
+			      contentdown : "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+			      contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+			      contentrefresh : "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+			      callback :downs//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+			    },
+			    up :{
+			    	contentrefresh: '正在加载...',
+			    	callback : updowns
+			    }
+			  }
+			});
+			function downs(){
+				setTimeout(function() {
+					mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+				},1500)
+			}
+			
+			function updowns(){
+				var _this = this;
+				setTimeout(function() {
+					_this.endPullupToRefresh(true);
+					
+				}, 1500);
+			}
+		</script>
+		
+	</body>
+</html>
